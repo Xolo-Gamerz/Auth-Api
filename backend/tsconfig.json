@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+
+    "module": "commonjs",
+    "rootDir": "src",
+    "allowJs": true,
+    "checkJs": true,
+
+    "declaration": true,
+    "outDir": "lib",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+
+    "strict": true,
+    "noImplicitAny": true,
+    "alwaysStrict": true,
+    "skipLibCheck": true
+  }
+}
