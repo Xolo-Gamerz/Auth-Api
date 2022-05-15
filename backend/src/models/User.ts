@@ -5,6 +5,7 @@ const UserSchema = new Schema<UserType>({
     name: String,
     email : String,
     password: String,
+    verified: Boolean,
     date : {type: Date, default: Date.now}
 })
 

@@ -14,11 +14,13 @@ const server = Fastify({
 });
 import HomeRoute from "./routes/Home";
 import LoginRoute from "./routes/Login";
+import RegisterRoute from "./routes/Register";
 const registerPlugin = (plugin: FastifyPluginAsync) => {
   server.register(plugin);
 };
 registerPlugin(HomeRoute);
 registerPlugin(LoginRoute);
+registerPlugin(RegisterRoute)
 const connecToMongo = async (token: string) => {
   try {
     await mongoose.connect(token);

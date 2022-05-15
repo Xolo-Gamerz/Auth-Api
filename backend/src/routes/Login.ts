@@ -5,6 +5,7 @@ import User from "../models/User";
 import config from "../config.json";
 import Jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
+import validateEmail from "../Helpers/ValidateEmail";
 const Schema = {
   $id: "LoginSchema",
   type: "object",
@@ -30,11 +31,7 @@ const LoginSchema = {
   body: Schema,
 };
 
-const validateEmail = (email: string) => {
-  const re =
-    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return re.test(String(email).toLowerCase());
-};
+
 const LoginRoute: FastifyPluginAsync = async (server) => {
   server.put<{ Body: FromSchema<typeof Schema> }>(
     "/login",
