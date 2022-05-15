@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "es2020",
 
     "module": "commonjs",
     "rootDir": "src",
@@ -15,6 +15,7 @@
     "strict": true,
     "noImplicitAny": true,
     "alwaysStrict": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "resolveJsonModule": true
   }
 }
