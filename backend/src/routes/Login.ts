@@ -19,7 +19,7 @@ const Schema = {
   },
   required: ["email", "password"],
   errorMessage: {
-    type: "The type should be an object",
+    type: "The body type should be an object",
     required: {
       email: "The email field is missing",
       password: "The password field is missing",
@@ -85,6 +85,15 @@ const LoginRoute: FastifyPluginAsync = async (server) => {
           });
           return;
         }
+        if(!user.verified){
+          res.status(403);
+          res.send({
+            code: 403,
+            error:"Invalid request",
+            message:"Email is not verified, please check your email"
+          })
+          return
+        }
         const data = {
           user: {
             id: user.id,
@@ -94,6 +103,7 @@ const LoginRoute: FastifyPluginAsync = async (server) => {
         const authToken = Jwt.sign(data, JwtSecret);
         res.status(200);
         res.send({
+          code:200,
           authToken: authToken
         })
       } catch (error) {
