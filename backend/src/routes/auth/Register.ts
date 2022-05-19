@@ -3,12 +3,12 @@ import { compile } from "handlebars";
 import fs from "fs";
 import path from "path";
 import nodemailer from "nodemailer";
-import User from "../models/User";
-import Token from "../models/Token";
+import User from "../../models/User";
+import Token from "../../models/Token";
 import bcrypt from "bcrypt";
-import validateEmail from "../Helpers/ValidateEmail";
+import validateEmail from "../../Helpers/ValidateEmail";
 import { FromSchema } from "json-schema-to-ts";
-import ValidateError from "../interfaces/ValidateError";
+import ValidateError from "../../interfaces/ValidateError";
 const Schema = {
   $id: "RegisterSchema",
   type: "object",
@@ -37,7 +37,7 @@ const RegisterSchema = {
   body: Schema,
 };
 const emailTemplateSource = fs.readFileSync(
-  path.join(__dirname, "../../templates/Email.hbs"),
+  path.join(__dirname, "../../../templates/Email.hbs"),
   "utf-8"
 );
 const template = compile(emailTemplateSource);
@@ -66,7 +66,7 @@ const sendMail = async (email: string, subject: string, html: string) => {
 
 const RegisterRoute: FastifyPluginAsync = async (server) => {
   server.post<{ Body: FromSchema<typeof Schema> }>(
-    "/register",
+    "/auth/register",
     {
       schema: RegisterSchema,
       attachValidation: true,
@@ -144,7 +144,7 @@ const RegisterRoute: FastifyPluginAsync = async (server) => {
         const htmlToSend = template({
           name: user.name,
           token: token.token,
-          url: `${process.env.ADRESS}/verify/?email=${user.email}&token=${token.token}`,
+          url: `${process.env.ADRESS}/auth/verify/?email=${user.email}&token=${token.token}`,
         });
         await sendMail(
           `${email}`,

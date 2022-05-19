@@ -13,9 +13,9 @@ const server = Fastify({
   }
 });
 import HomeRoute from "./routes/Home";
-import LoginRoute from "./routes/Login";
-import RegisterRoute from "./routes/Register";
-import VerifyRoute from "./routes/Verify";
+import LoginRoute from "./routes/auth/Login";
+import RegisterRoute from "./routes/auth/Register";
+import VerifyRoute from "./routes/auth/Verify";
 const registerPlugin = (plugin: FastifyPluginAsync) => {
   server.register(plugin);
 };

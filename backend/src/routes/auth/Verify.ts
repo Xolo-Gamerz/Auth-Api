@@ -1,8 +1,8 @@
 import { FastifyPluginAsync, FastifyRequest } from "fastify";
 import Jwt from "jsonwebtoken";
-import config from "../config.json";
-import User from "../models/User";
-import Token from "../models/Token";
+import config from "../../config.json";
+import User from "../../models/User";
+import Token from "../../models/Token";
 const Schema = {
   $id: "VerifySchema",
   type: "object",
@@ -41,7 +41,7 @@ const QuerySchema = {
 };
 const VerifyRoute: FastifyPluginAsync = async (server) => {
   server.get(
-    "/verify/:params",
+    "/auth/verify/:params",
     {
       schema: QuerySchema,
     },

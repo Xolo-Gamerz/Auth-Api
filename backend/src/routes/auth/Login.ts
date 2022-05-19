@@ -1,11 +1,11 @@
 import { FastifyPluginAsync } from "fastify";
 import { FromSchema } from "json-schema-to-ts";
-import ValidateError from "../interfaces/ValidateError";
-import User from "../models/User";
-import config from "../config.json";
+import ValidateError from "../../interfaces/ValidateError";
+import User from "../../models/User";
+import config from "../../config.json";
 import Jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
-import validateEmail from "../Helpers/ValidateEmail";
+import validateEmail from "../../Helpers/ValidateEmail";
 const Schema = {
   $id: "LoginSchema",
   type: "object",
@@ -34,7 +34,7 @@ const LoginSchema = {
 
 const LoginRoute: FastifyPluginAsync = async (server) => {
   server.put<{ Body: FromSchema<typeof Schema> }>(
-    "/login",
+    "/auth/login",
     {
       schema: LoginSchema,
       attachValidation: true,
