@@ -1,11 +1,9 @@
 import {Schema, model} from "mongoose"
 import NoteType from "../interfaces/Note"
+import NoteChildSchema from "./NoteChild"
 const NoteSchema = new Schema<NoteType>({
-    noteId: String,
-    title: String,
-    description: String,
-    category: String,
-    date:{ type: Date , default: Date.now}
+    userId: String,
+    notes: [NoteChildSchema]
 })
 const Note = model("Notes",NoteSchema)
 export default Note

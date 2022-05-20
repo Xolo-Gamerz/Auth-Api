@@ -1,8 +1,6 @@
+import NoteChildType from "./NoteChild"
 interface NoteType{
-    noteId : string
-    title: string
-    description: string
-    category: string
-    date: Date
+    userId: string
+    notes: NoteChildType[]
 }
 export default NoteType

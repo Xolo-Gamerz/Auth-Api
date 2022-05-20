@@ -16,6 +16,9 @@ import HomeRoute from "./routes/Home";
 import LoginRoute from "./routes/auth/Login";
 import RegisterRoute from "./routes/auth/Register";
 import VerifyRoute from "./routes/auth/Verify";
+import createNoteRoute from "./routes/notes/createNote";
+import updateNoteRoute from "./routes/notes/updateNote";
+import deleteNoteRoute from "./routes/notes/deleteNote";
 const registerPlugin = (plugin: FastifyPluginAsync) => {
   server.register(plugin);
 };
@@ -23,6 +26,9 @@ registerPlugin(HomeRoute);
 registerPlugin(LoginRoute);
 registerPlugin(RegisterRoute);
 registerPlugin(VerifyRoute)
+registerPlugin(createNoteRoute)
+registerPlugin(updateNoteRoute)
+registerPlugin(deleteNoteRoute)
 const connecToMongo = async (token: string) => {
   try {
     await mongoose.connect(token);

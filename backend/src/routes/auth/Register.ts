@@ -99,10 +99,10 @@ const RegisterRoute: FastifyPluginAsync = async (server) => {
           return;
         }
         if (Email) {
-          res.status(400);
+          res.status(409);
           res.send({
             code: 409,
-            error: "Email is already exists",
+            error: "Email already exists",
             message: "The email is already associated with an account",
           });
           return;
