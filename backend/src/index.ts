@@ -19,6 +19,7 @@ import VerifyRoute from "./routes/auth/Verify";
 import createNoteRoute from "./routes/notes/createNote";
 import updateNoteRoute from "./routes/notes/updateNote";
 import deleteNoteRoute from "./routes/notes/deleteNote";
+import getAllNoteRoute from "./routes/notes/getAllNote";
 const registerPlugin = (plugin: FastifyPluginAsync) => {
   server.register(plugin);
 };
@@ -29,6 +30,7 @@ registerPlugin(VerifyRoute)
 registerPlugin(createNoteRoute)
 registerPlugin(updateNoteRoute)
 registerPlugin(deleteNoteRoute)
+registerPlugin(getAllNoteRoute)
 const connecToMongo = async (token: string) => {
   try {
     await mongoose.connect(token);
