@@ -1,7 +1,7 @@
 <script lang="ts">
-import { goto } from '$app/navigation';
-
-	import type NavbarLi from 'src/interfaces/NavbarLi';
+	import { goto } from '$app/navigation';
+	import getUrlEndpoint from '../helpers/getUrlEndpoint';
+	import type NavbarLi from '../interfaces/NavbarLi';
 	import Icon from '../assets/Icon.svg';
 	const ListItems: Array<NavbarLi> = [
 		{
@@ -30,9 +30,11 @@ import { goto } from '$app/navigation';
 			id: Math.random() * 1000 + 100
 		}
 	];
-	const handleClick = () =>{
-		goto("/login")
-	}
+	const getLocation = () => {
+	};
+	const handleClick = () => {
+		goto('/login');
+	};
 </script>
 
 <nav class="container">
@@ -79,7 +81,7 @@ import { goto } from '$app/navigation';
 		font-family: cursive;
 		font-weight: 900;
 	}
-	ul li a:hover {
+	.active ul li a:hover {
 		color: black !important;
 		background: rgb(89, 0, 16);
 		border-radius: 5.2rem;

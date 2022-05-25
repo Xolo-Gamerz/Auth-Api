@@ -1,6 +1,6 @@
-interface NavbarLi{
-    name : string
-    url:string
-    id: number
+interface NavbarLi {
+	name: string;
+	url: string;
+	id: number;
 }
-export default NavbarLi
+export default NavbarLi;

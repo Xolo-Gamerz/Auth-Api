@@ -1,3 +1,3 @@
 <svelte:head>
-  <title>NoteSic</title>
+	<title>NoteSic</title>
 </svelte:head>
